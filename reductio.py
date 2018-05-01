@@ -4,8 +4,18 @@ text_file.close()
 
 full_text = full_text.split()
 
-def wordFrequency(input):
- return len([word for word in full_text if word == ""])
+def wordFrequency(target):
+ return len([word for word in full_text if word.lower() == target.lower()])
 
 
-print "frequency of '': " wordFrequency()
+print "frequency of 'Alice': " + str(wordFrequency("alice"))
+
+def groupFrequency(target_words):
+ frequencies = [wordFrequency(word) for word in target_words.split()]
+ #print frequencies
+ return reduce((lambda a,b : a + b), frequencies)
+
+print "frequency of 'Alice', 'Rabbit', and 'Cheshire': " + str(groupFrequency("Alice Rabbit Cheshire"))
+
+def mostFrequent():
+ 
